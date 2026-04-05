@@ -1,0 +1,31 @@
+graph TD
+    A["🎵 INPUT: User Preferences<br/>genus=pop, mood=happy<br/>energy=0.7, valence=0.8"] --> B["📂 Load songs.csv<br/>18 songs × 10 features"]
+    
+    B --> C{"🔄 Loop Through<br/>Each Song"}
+    
+    C --> D["📊 Score Individual Song"]
+    
+    D --> E["<b>Genre Points</b><br/>+2.0 or 0.0"]
+    E --> F["<b>Mood Points</b><br/>+1.0 or +0.8 or 0.0"]
+    F --> G["<b>Energy Points</b><br/>1 - |user - song| × 2.5"]
+    G --> H["<b>Valence Points</b><br/>1 - |user - song| × 2.0"]
+    H --> I["<b>Danceability Points</b><br/>song_danceability × 0.5"]
+    
+    I --> J["✅ Total Score<br/>E + M + En + V + D<br/>Max: 8.0"]
+    
+    J --> K["💾 Store<br/>Song ID + Score"]
+    
+    K --> C
+    C -->|More songs| D
+    C -->|All scored| L["📈 Sort All Songs<br/>by Score DESC"]
+    
+    L --> M["🏆 Select Top K<br/>k=5 recommendations"]
+    
+    M --> N["📋 OUTPUT: Ranked List<br/>1. Song A - 7.51 pts<br/>2. Song B - 7.12 pts<br/>3. Song C - 6.89 pts<br/>..."]
+    
+    style A fill:#e1f5ff
+    style N fill:#c8e6c9
+    style J fill:#fff9c4
+    style C fill:#f3e5f5
+    style L fill:#ffe0b2
+    style M fill:#ffccbc

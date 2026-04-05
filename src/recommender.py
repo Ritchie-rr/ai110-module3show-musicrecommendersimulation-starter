@@ -109,7 +109,7 @@ def compute_mood_points(user_mood: str, song_mood: str) -> Tuple[float, str]:
     # Check if both moods are in the same group
     for group, moods in MOOD_GROUPS.items():
         if user_mood in moods and song_mood in moods:
-            return 0.8, f"mood group match ({user_mood} ≈ {song_mood})"
+            return 0.8, f"mood group match ({user_mood} ~= {song_mood})"
     
     return 0.0, f"mood mismatch (wanted {user_mood}, got {song_mood})"
 
